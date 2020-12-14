@@ -4,10 +4,11 @@
 * @describe:
 */
 
-import React, { useContext, useState, FunctionComponentElement } from 'react';
+import React, {useContext, useState, FunctionComponentElement} from 'react';
 import classNames from 'classnames';
-import { MenuContext } from './menu';
-import { MenuItemProps } from './menuItem';
+import {MenuContext} from './menu';
+import {MenuItemProps} from './menuItem';
+
 // import Icon from '../Icon/icon';
 
 export interface SubMenuProps {
@@ -16,10 +17,10 @@ export interface SubMenuProps {
     className?: string;
 }
 
-const SubMenu: React.FC<SubMenuProps> = ({ index, title, children, className }) => {
+const SubMenu: React.FC<SubMenuProps> = ({index, title, children, className}) => {
     const context = useContext(MenuContext);
     const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
-    const isOpened = (index && context.mode === 'vertical') ? openedSubMenus.includes(index): false;
+    const isOpened = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false;
     const [menuOpen, setOpen] = useState(isOpened);
     const classStyle = classNames('menu-item submenu-item', className, {
         'is-active': context.index === index,
@@ -30,7 +31,7 @@ const SubMenu: React.FC<SubMenuProps> = ({ index, title, children, className }) 
     const handleClick = (e: React.MouseEvent) => {
         e.preventDefault();
         setOpen(!menuOpen);
-    }
+    };
 
     let timer: any;
     const handleMouse = (e: React.MouseEvent, toggle: boolean) => {
@@ -39,21 +40,25 @@ const SubMenu: React.FC<SubMenuProps> = ({ index, title, children, className }) 
         timer = setTimeout(() => {
             setOpen(toggle);
         }, 300);
-    }
-
+    };
+   // 纵向 点击
     const clickEvents = context.mode === 'vertical' ? {
         onClick: handleClick
-    } : {}
-
+    } : {};
+    // 横向 移入移出
     const hoverEvents = context.mode !== 'vertical' ? {
-        onMouseEnter: (e: React.MouseEvent) => { handleMouse(e, true)},
-        onMouseLeave: (e: React.MouseEvent) => { handleMouse(e, false)}
-    } : {}
+        onMouseEnter: (e: React.MouseEvent) => {
+            handleMouse(e, true);
+        },
+        onMouseLeave: (e: React.MouseEvent) => {
+            handleMouse(e, false);
+        }
+    } : {};
 
     const renderChildren = () => {
         const subMenuClasses = classNames('menu-submenu', {
             'menu-opened': menuOpen
-        })
+        });
         const childComponent = React.Children.map(children, (child, i) => {
             const childElement = child as FunctionComponentElement<MenuItemProps>;
             if (childElement.type.displayName === 'MenuItem') {

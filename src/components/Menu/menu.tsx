@@ -17,7 +17,7 @@ export interface MenuProps {
     mode?: MenuMode;
     style?: React.CSSProperties;
     onSelect?: SelectCallback;
-    defaultOpenSubMenus?: string[];
+    defaultOpenSubMenus?: string[]; // 默认展开
 }
 
 interface IMenuContent {

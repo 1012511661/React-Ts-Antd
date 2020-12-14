@@ -3,7 +3,7 @@ import React from 'react';
 import './styles/index.scss';
 import Button from './components/Button/button'; // button
 import Menu from './components/Menu/menu'; // Menu
-import MenuItem from "./components/Menu/menuItem"; //MenuItem
+import MenuItem from './components/Menu/menuItem'; //MenuItem
 import SubMenu from './components/Menu/subMenu';
 import HelloWarp from './components/hello';
 
@@ -17,15 +17,10 @@ const App: React.FC = () => {
             <Button btnType='default' size='lg'>Danger -- Large</Button>
             <Button disabled>disabled</Button>
             <Button btnType='link' size='lg' href="http://www.baidu.com">Link</Button>
-            <h3>Menu</h3>
-            {/*<Menu defaultIndex={'0'}>*/}
-            {/*    <MenuItem index={"0"}>1111</MenuItem>*/}
-            {/*    <MenuItem index={"1"}>22222</MenuItem>*/}
-            {/*    <MenuItem index={"2"}>3333</MenuItem>*/}
-            {/*</Menu>*/}
+            <h3>Menu 纵向可以设置默认展开,使用单击切换选择；横向没有设置默认展开，鼠标移入移出切换选择</h3>
             <Menu
-                defaultIndex="0"
-                // mode="vertical"
+                defaultIndex="2"
+                mode="vertical"
                 defaultOpenSubMenus={['2']}
                 onSelect={(index) => {
                     console.log(index);
@@ -38,8 +33,8 @@ const App: React.FC = () => {
                     <MenuItem>dropdown 2</MenuItem>
                     <MenuItem>dropdown 3</MenuItem>
                 </SubMenu>
-                <MenuItem disabled>cool link 3</MenuItem>
-                <MenuItem>cool link 4</MenuItem>
+                <MenuItem>cool link 3</MenuItem>
+                <MenuItem disabled>cool link 4</MenuItem>
             </Menu>
         </div>
     );
