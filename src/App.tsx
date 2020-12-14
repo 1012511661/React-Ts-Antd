@@ -7,9 +7,15 @@ import MenuItem from './components/Menu/menuItem'; //MenuItem
 import SubMenu from './components/Menu/subMenu';
 import HelloWarp from './components/hello';
 
+import Icon from './components/Icon/icon';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fas);
 const App: React.FC = () => {
     return (
         <div className="App">
+            <Icon icon='coffee' theme="primary" size="10x"/>
             <HelloWarp message="hello world"/>
             <h3>Button</h3>
             <Button>默认</Button>

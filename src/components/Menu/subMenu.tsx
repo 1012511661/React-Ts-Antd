@@ -8,8 +8,7 @@ import React, {useContext, useState, FunctionComponentElement} from 'react';
 import classNames from 'classnames';
 import {MenuContext} from './menu';
 import {MenuItemProps} from './menuItem';
-
-// import Icon from '../Icon/icon';
+import Icon from '../Icon/icon';
 
 export interface SubMenuProps {
     index?: string;
@@ -41,7 +40,7 @@ const SubMenu: React.FC<SubMenuProps> = ({index, title, children, className}) =>
             setOpen(toggle);
         }, 300);
     };
-   // 纵向 点击
+    // 纵向 点击
     const clickEvents = context.mode === 'vertical' ? {
         onClick: handleClick
     } : {};
@@ -76,7 +75,7 @@ const SubMenu: React.FC<SubMenuProps> = ({index, title, children, className}) =>
         <li key={index} className={classStyle} {...hoverEvents}>
             <div className="submenu-title" {...clickEvents}>
                 {title}
-                {/*<Icon icon="angle-down" className="arrow-icon" />*/}
+                <Icon icon="angle-down" className="arrow-icon" />
             </div>
             {renderChildren()}
         </li>
