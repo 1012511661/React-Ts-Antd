@@ -7,7 +7,6 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
-
 // 尺寸
 export type ButtonSize = 'lg' | 'sm'
 // 类型

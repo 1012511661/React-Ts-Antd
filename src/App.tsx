@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import './App.css';
 import './styles/index.scss';
 import Button from './components/Button/button'; // button
+import Alert from './components/Alert/alert'; // Alert
 import Menu from './components/Menu/menu'; // Menu
 import MenuItem from './components/Menu/menuItem'; //MenuItem
-import SubMenu from './components/Menu/subMenu';
+import SubMenu from './components/Menu/subMenu'; //SunMenu
 import Transition from './components/Transition/transition'; // Transition
-
+import Progress from './components/Progress/progress'; // 进度
 import HelloWarp from './components/hello';
 import Icon from './components/Icon/icon';
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -17,7 +18,6 @@ const App: React.FC = () => {
     const [show, setShow] = useState(false);
     return (
         <div className="App">
-            <Icon icon='coffee' theme="primary" size="10x"/>
             <HelloWarp message="hello world"/>
             <h3>Button</h3>
             <Button>默认</Button>
@@ -25,9 +25,15 @@ const App: React.FC = () => {
             <Button btnType='default' size='lg'>Danger -- Large</Button>
             <Button disabled>disabled</Button>
             <Button btnType='link' size='lg' href="http://www.baidu.com">Link</Button>
+            <h3>Alert</h3>
+            <Alert onClose={(e) => alert(e)}></Alert>
+            <Alert type="success" description="成功"></Alert>
+            <Alert type="danger" description="失败"></Alert>
+            <Alert type="warning" closable={false} description="警告"></Alert>
+            <Alert title="标题" description="自定义描述"></Alert>
             <h3>Menu 纵向可以设置默认展开,使用单击切换选择；横向没有设置默认展开，鼠标移入移出切换选择</h3>
             <Menu
-                defaultIndex="2"
+                defaultIndex="1"
                 // mode="vertical"
                 // defaultOpenSubMenus={['2']}
                 onSelect={(index) => {
@@ -64,6 +70,10 @@ const App: React.FC = () => {
                 wrapper>
                 <Button btnType='primary' size='lg'>Button</Button>
             </Transition>
+            <h3>Progress</h3>
+            <Progress percent={18}></Progress>
+            <Progress percent={18} theme='danger'></Progress>
+            <Progress percent={18} showText={false} theme='secondary'></Progress>
         </div>
     );
 };

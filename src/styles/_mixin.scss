@@ -1,7 +1,7 @@
-@mixin button-size($padding-y, $padding-x, $font-size, $border-raduis) {
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
-  border-radius: $border-raduis;
+  border-radius: $border-radius;
 }
 
 @mixin button-style(
@@ -32,6 +32,11 @@
     background: $background;
     border-color: $border;
   }
+}
+
+@mixin alert-style($background, $border) {
+  background: $background;
+  border-color: $border;
 }
 
 @mixin zoom-animation(
@@ -69,4 +74,9 @@
 @mixin border-left-radius($raduis) {
   border-top-left-radius: $raduis;
   border-bottom-left-radius: $raduis;
+}
+
+@mixin border-top-radius($raduis) {
+  border-top-left-radius: $raduis;
+  border-top-right-radius: $raduis;
 }
